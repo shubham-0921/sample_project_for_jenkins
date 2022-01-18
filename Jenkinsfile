@@ -1,7 +1,5 @@
 // CODE_CHANGES = getGitChanges() //here the getGitChanges will have the logic of checking if there were code changes thru a groovy file
 
-def
-
 pipeline {
     agent any
     environment{
