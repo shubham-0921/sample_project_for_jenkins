@@ -1,11 +1,10 @@
 // CODE_CHANGES = getGitChanges() //here the getGitChanges will have the logic of checking if there were code changes thru a groovy file
 
-def gv = load "script.groovy"
-
 pipeline {
     agent any
     environment{
        NEW_VERSION  = '1.6.0'
+       GV = load "script.groovy"
     }
     stages {
         stage('build') {
@@ -13,7 +12,7 @@ pipeline {
                 echo 'Building my application'
                 echo "Version is ${NEW_VERSION}"
                 script{
-                    gv.buildApp()
+                    GV.buildApp()
                 }
             }
         }
@@ -26,7 +25,7 @@ pipeline {
              steps {
                 echo 'Testing my application'
                 script{
-                    gv.testApp()
+                    GV.testApp()
                 }
               }
         }
